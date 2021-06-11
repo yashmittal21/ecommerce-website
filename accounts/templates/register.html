@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %} 
+	<div align="center"><br><br><br>
+	<form action="{% url 'register' %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="first_name" placeholder="First name"><br><br>
+		<input type="text" name="last_name" placeholder="Last name"><br><br>
+		<input type="text" name="username" placeholder="username"><br><br>
+		<input type="email" name="email" placeholder="email"><br><br>
+		<input type="password" name="password1" placeholder="password"><br><br>
+		<input type="password" name="password2" placeholder="Confirm_Password"><br><br>
+		<input type="submit" name="submit"><br>
+	</form>
+	<br>
+	{% for i in messages %}
+		<h3>{{ i }}</h3>
+	{% endfor %}
+	</div>
+{% endblock content %}

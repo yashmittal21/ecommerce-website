@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %} 
+	<div class="row">
+		{% for i in product %}
+			<div class="col-lg-4">
+				<img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+				<div class="box-element product">
+					<h6><strong>{{i.name}}</strong></h6>
+					<hr>
+					<form action="{% url 'add' %}" method="post">
+						{% csrf_token %}
+						<!-- <input type="submit" value="submit" name={{i.name}} class="btn btn-outline-secondary add-btn"> -->
+						<button value={{i.id}} name = 'try' class="btn btn-outline-secondary add-btn" data-action="add" type="submit">Add to Cart</button>
+					</form> 
+					<a class="btn btn-outline-success" href="#">View</a>
+					<h4 style="display: inline-block; float: right">{{i.price}}Rs</h4>
+ 
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock content %}
