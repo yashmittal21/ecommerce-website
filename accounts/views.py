@@ -31,7 +31,7 @@ def register(request):
 			if(User.objects.filter(username=username).exists()):
 				messages.info(request,'username aleady taken')
 			elif(User.objects.filter(email=email).exists()):
-				messages.info(request,'email already taken')
+				messages.info(request,'this email id is already registered')
 			else:
 				user = User.objects.create_user(username=username, password=p1, email=email,first_name=f,last_name=l)
 				user.save();
